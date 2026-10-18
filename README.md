@@ -23,7 +23,7 @@ A hands-on DevOps portfolio project that automates building, containerizing, pub
 - **Application source:** https://github.com/manojselvang/manoj-devops-portfolio
 - **CI/CD repository:** `manoj-devops-portfolio-cicd` — update this with the repository URL after it is created and pushed.
 
-The application repository contains the frontend and backend source code. This repository contains the Jenkinsfile, Kubernetes manifests, helper scripts, screenshots, and documentation.
+The application repository contains the frontend and backend source code. This repository contains the Jenkinsfile, Kubernetes manifests, helper scripts, Screenshots, and documentation.
 
 ## End-to-End Workflow
 
@@ -35,7 +35,7 @@ The application repository contains the frontend and backend source code. This r
 6. Jenkins deploys the newly built image versions to Kubernetes.
 7. Jenkins waits for rollout completion and verifies the application resources.
 
-![First successful Jenkins pipeline run](screenshots/jenkins-1st-pipeline-run-success.png)
+![First successful Jenkins pipeline run](Screenshots/jenkins-1st-pipeline-run-success.png)
 
 ## Architecture and Infrastructure
 
@@ -49,7 +49,7 @@ The lab uses three AWS EC2 instances in the Mumbai region (`ap-south-1`).
 
 Kubernetes was initialized using `kubeadm`, with Calico providing pod networking. The control-plane and worker nodes reached the `Ready` state.
 
-![Kubernetes worker connected to control plane](screenshots/k8s-worker-node-connected-to-k8s-control-plane.png)
+![Kubernetes worker connected to control plane](Screenshots/k8s-worker-node-connected-to-k8s-control-plane.png)
 
 ### Network access
 
@@ -77,11 +77,11 @@ Do not expose the Kubernetes API or administrative interfaces to the public inte
 - Exposed internally by a Kubernetes ClusterIP Service on port `8080`.
 - Health endpoint: `/api/health`.
 
-![Frontend and backend Docker images built successfully](screenshots/frontend-and-backend-docker-image-built-successfully.png)
+![Frontend and backend Docker images built successfully](Screenshots/frontend-and-backend-docker-image-built-successfully.png)
 
 The frontend Nginx proxy and backend health endpoint were tested together:
 
-![Backend health check through frontend Nginx](screenshots/health-check-of-backend-and-nginx-from-front-end.png)
+![Backend health check through frontend Nginx](Screenshots/health-check-of-backend-and-nginx-from-front-end.png)
 
 ## Docker Hub Images
 
@@ -92,7 +92,7 @@ The pipeline publishes these images:
 
 Use a build-specific image tag for each pipeline run and deploy that exact tag. Avoid relying exclusively on `latest` when you need reproducible releases.
 
-![Docker images pushed to Docker Hub](screenshots/docker-images-tagged-and-successfully-received-in-docker-hub.png)
+![Docker images pushed to Docker Hub](Screenshots/docker-images-tagged-and-successfully-received-in-docker-hub.png)
 
 ## Kubernetes Deployment
 
@@ -135,7 +135,7 @@ kubectl auth can-i get pods
 kubectl auth can-i create clusterroles
 ```
 
-![Restricted RBAC access for Jenkins](docs/screenshots/restricted-rbac-access-for-jenkins-user-in-9s-cluster.png)
+![Restricted RBAC access for Jenkins](Screenshots/restricted-rbac-access-for-jenkins-user-in-9s-cluster.png)
 
 ## Repository Structure
 
@@ -152,7 +152,7 @@ manoj-devops-portfolio-cicd/
 ├── scripts/
 │   ├── validate-manifests.sh
 │   └── verify-deployment.sh
-└── screenshots/
+└── Screenshots/
 ```
 
 Keep the frontend Service manifest synchronized with the live cluster configuration. If the intended public access method is NodePort, specify `type: NodePort` and `nodePort: 30080` in `k8s/frontend.yaml`.
